@@ -6,6 +6,8 @@ export type Dragon = {
   histories: string;
 }
 
+export type Dragons = Dragon[];
+
 export type User = {
   name: string;
   password: string;

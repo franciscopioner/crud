@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { User } from '../../../core/constants/types/dragon'
-import usePersistedState from '../../../hooks/use-persisted-state'
+import usePersistedState from '../../../hooks/usePersistedState'
 
 const LoginForm = () => {
   const navigate = useNavigate()

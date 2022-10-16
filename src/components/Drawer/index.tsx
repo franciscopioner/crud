@@ -8,13 +8,15 @@ type DrawerProps = {
 }
 
 const Drawer = ({ title, setIsVisibleDrawer, children }: DrawerProps) => {
+  const shouldShowButton = setIsVisibleDrawer
+
   return (
     <Container>
       <Header>
         <h2>{title}</h2>
       </Header>
       <Body>{children}</Body>
-      {setIsVisibleDrawer && (
+      {shouldShowButton && (
         <Footer>
           <button onClick={() => setIsVisibleDrawer(false)}>Fechar</button>
         </Footer>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Dragon } from '../../../core/constants/types/dragon'
-import { api } from '../../../services/api/methods'
+import { useCreateDragon } from '../../../hooks/useCreateDragon'
+import { useUpdateDragon } from '../../../hooks/useUpdateDrgon'
 
 type DragonFormProps = {
   data?: Dragon
@@ -11,8 +12,8 @@ type DragonFormProps = {
 const DragonForm = ({ data, setIsVisibleDrawer }: DragonFormProps) => {
   const { register, handleSubmit } = useForm()
   const { mutateAsync, isLoading } = data
-    ? api.updateDragon(data.id)
-    : api.createDragon()
+    ? useUpdateDragon(data.id as string)
+    : useCreateDragon()
 
   const onSubmit = (value: any) => {
     mutateAsync(value).then(() => {

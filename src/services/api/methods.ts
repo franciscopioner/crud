@@ -1,54 +1,34 @@
 import {useMutation, useQuery, useQueryClient} from 'react-query';
-import { Dragon } from '../../core/constants/types/dragon';
+import { Dragon, Dragons } from '../../core/constants/types/dragon';
 
 import { dragonsClient } from './axios'
 
-const getDragons = (dragonId?: string) => {
-  const url = dragonId ? `/api/v1/dragon/${dragonId}` : '/api/v1/dragon'
-
-  const { data, isFetching } = useQuery(
-    'dragons', async () => await dragonsClient.get(url), {
-      refetchOnWindowFocus: false,
-    },
-  )
-
-  return { data: data?.data, isFetching }
+export const axiosGetDragons = async () => {
+  const dragons = await dragonsClient.get('/api/v1/dragon')
+  console.log(dragons)
+  return dragons
 }
 
-const updateDragon = (dragonId?:string) => {
-  const queryClient = useQueryClient()
-  const {isLoading, mutateAsync} = useMutation(async (value) => await dragonsClient.put(`/api/v1/dragon/${dragonId}`, value), {
-    onSuccess: () => {
-      queryClient.invalidateQueries('dragons')
-    }
-  })
-  return {isLoading, mutateAsync}
+export const axiosGetDragon = async (dragonId: string) => {
+  const dragon = await dragonsClient.get(`/api/v1/dragon/${dragonId}`)
+
+  return dragon
 }
 
-const createDragon = () => {
-  const queryClient = useQueryClient()
-  const {isLoading, mutateAsync} = useMutation(async (data:Dragon) => await dragonsClient.post(`/api/v1/dragon`, data), {
-    onSuccess: () => {
-      queryClient.invalidateQueries('dragons')
-    }
-  })
-  return {isLoading, mutateAsync}
+export const axiosUpdateDragon = async (dragonId: string, value: Dragon) => {
+  const dragon = await dragonsClient.put(`/api/v1/dragon/${dragonId}`, value)
+
+  return dragon
 }
 
-const deleteDragon = () => {
-  const queryClient = useQueryClient()
-  const {mutateAsync, isLoading} = useMutation(async (dragonId?:string) => await dragonsClient.delete(`/api/v1/dragon/${dragonId}`), {
-    onSuccess: () => {
-      queryClient.invalidateQueries('dragons')
-    }
-  })
-  return {mutateAsync, isLoading}
+export const axiosCreateDragon = async (value: Dragon) => {
+  const dragon = await dragonsClient.post(`/api/v1/dragon`, value)
+
+  return dragon
 }
 
-export const api = {
-  getDragons,
-  updateDragon,
-  createDragon,
-  deleteDragon
+export const axiosDeleteDragon = async (dragonId: string) => {
+  const dragon = await dragonsClient.delete(`/api/v1/dragon/${dragonId}`)
 
+  return dragon
 }
