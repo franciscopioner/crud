@@ -9,8 +9,8 @@ type ContentProps = {
 const Content = ({ data }: ContentProps) => {
   return (
     <>
-      {data?.map((dragon: Dragon) => {
-        return <Card key={dragon.id} id={dragon.id} name={dragon.name} />
+      {data?.map((dragon: Dragon, index) => {
+        return <Card key={index} id={dragon.id} name={dragon.name} />
       })}
     </>
   )

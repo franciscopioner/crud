@@ -1,11 +1,10 @@
-import {useMutation, useQuery, useQueryClient} from 'react-query';
-import { Dragon, Dragons } from '../../core/constants/types/dragon';
+import { Dragon } from '../../core/constants/types/dragon';
 
 import { dragonsClient } from './axios'
 
 export const axiosGetDragons = async () => {
   const dragons = await dragonsClient.get('/api/v1/dragon')
-  console.log(dragons)
+
   return dragons
 }
 

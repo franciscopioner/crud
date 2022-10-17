@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from './styles'
-import { api } from '../../services/api/methods'
+import { useDeleteDragon } from '../../hooks/useDeleteDragon'
 import { Link } from 'react-router-dom'
 
 type CardProps = {
@@ -9,9 +9,9 @@ type CardProps = {
 }
 
 const Card = ({ id, name }: CardProps) => {
-  const { mutateAsync, isLoading } = api.deleteDragon()
+  const { mutateAsync, isLoading } = useDeleteDragon()
   const handleDelete = () => {
-    mutateAsync(id)
+    mutateAsync(id as string)
   }
 
   return (
