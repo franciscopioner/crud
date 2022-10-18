@@ -5,9 +5,7 @@ import Header from '../../components/Header'
 describe('Header Component', () => {
   it('should render title', () => {
     const name = 'Toothless'
-    const { getByText, debug } = render(<Header title={name} />)
-
-    debug()
+    const { getByText } = render(<Header title={name} />)
 
     expect(getByText('Toothless')).toBeInTheDocument()
   })
@@ -17,7 +15,7 @@ describe('Header Component', () => {
     const buttonText = 'Criar'
     const isVisibleDrawer = false
     const setIsVisibleDrawer = () => {}
-    const { getByText, debug } = render(
+    const { getByText } = render(
       <Header
         title={name}
         buttonText={buttonText}
@@ -25,8 +23,6 @@ describe('Header Component', () => {
         setIsVisibleDrawer={setIsVisibleDrawer}
       />
     )
-
-    debug()
 
     expect(getByText('Criar')).toBeInTheDocument()
   })
@@ -36,7 +32,7 @@ describe('Header Component', () => {
     const buttonText = 'Criar'
     const isVisibleDrawer = true
     const setIsVisibleDrawer = () => {}
-    const { queryByText, debug } = render(
+    const { queryByText } = render(
       <Header
         title={name}
         buttonText={buttonText}
@@ -44,8 +40,6 @@ describe('Header Component', () => {
         setIsVisibleDrawer={setIsVisibleDrawer}
       />
     )
-
-    debug()
 
     expect(queryByText('Criar')).not.toBeInTheDocument()
   })
