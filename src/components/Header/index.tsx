@@ -13,10 +13,11 @@ const Header = ({
   setIsVisibleDrawer,
   isVisibleDrawer,
 }: HeaderProps) => {
+  const shouldShowButton = !isVisibleDrawer && setIsVisibleDrawer
   return (
     <header>
       <h1>{title}</h1>
-      {!isVisibleDrawer && setIsVisibleDrawer && (
+      {shouldShowButton && (
         <button onClick={() => setIsVisibleDrawer(true)}>{buttonText}</button>
       )}
     </header>

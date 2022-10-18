@@ -19,7 +19,6 @@ const DragonItem = () => {
     <Container>
       <Header
         title={`Dragão ${data.name}`}
-        setIsVisibleDrawer={setIsVisibleDrawer}
         buttonText="Editar"
         isVisibleDrawer={isVisibleDrawer}
       />
