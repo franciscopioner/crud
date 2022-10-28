@@ -21,6 +21,7 @@ const DragonItem = () => {
         title={`Dragão ${data.name}`}
         buttonText="Editar"
         isVisibleDrawer={isVisibleDrawer}
+        setIsVisibleDrawer={setIsVisibleDrawer}
       />
       <section>
         {isVisibleDrawer ? (
