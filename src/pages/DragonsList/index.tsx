@@ -6,6 +6,7 @@ import { useGetDragons } from '../../hooks/useGetDragons'
 import Header from '../../components/Header'
 import { Spinner } from '../../components/Loader'
 import Content from './components/Content'
+import { sortData } from '../../utils/sort'
 
 const DragonList = () => {
   const { data, isFetching } = useGetDragons()
@@ -30,7 +31,7 @@ const DragonList = () => {
             <DragonForm setIsVisibleDrawer={setIsVisibleDrawer} />
           </Drawer>
         ) : (
-          <Content data={data} />
+          <Content data={sortData({ data, key: 'name', order: 'asc' })} />
         )}
       </section>
     </Container>
