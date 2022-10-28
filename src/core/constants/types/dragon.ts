@@ -4,6 +4,7 @@ export type Dragon = {
   name: string;
   type: string;
   histories: string;
+  numero: number;
 }
 
 export type Dragons = Dragon[];
